@@ -14,7 +14,16 @@
     <p>
         Voici les <strong>deux dernières formations</strong> ajoutées au catalogue :
         <table class="table">
-            <tr>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Date de publication</th>
+                    <th>Titre</th>
+                    <th>Playlist</th>
+                    <th>Catégories</th>
+                </tr>
+            </thead>
+            <body>
                 {% for formation in formations %}
                     <td>
                         <div class="row">
@@ -40,7 +49,7 @@
                             </div>    
                         </div>                    
                 {% endfor %}    
-            </tr>
+            </tbody>
 
         </table>        
     </p>
