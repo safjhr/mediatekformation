@@ -62,11 +62,14 @@ class PlaylistsController extends AbstractController {
     }
 
     #[Route('/playlists/tri/{champ}/{ordre}', name: 'playlists.sort')]
-    public function sort($champ, $ordre): SortResponse{
+    public function sort($champ, $ordre): Response{
         switch($champ){
             case "name":
                 $playlists = $this->playlistRepository->findAllOrderByName($ordre);
                 break;
+            case "formationCount":  // Nouveau cas pour le tri par nombre de formations
+            $playlists = $this->playlistRepository->findAllWithFormationCount($ordre);
+            break;
              default:
                 // Gestion du cas par défaut (par exemple, ne rien faire ou lancer une exception)
                 $playlists = $this->playlistRepository->findAllOrderByName('ASC'); // Ou gérer autrement
@@ -80,7 +83,7 @@ class PlaylistsController extends AbstractController {
     }          
 
     #[Route('/playlists/recherche/{champ}/{table}', name: 'playlists.findallcontain')]
-    public function findAllContain($champ, Request $request, $table=""): FindResponse{
+    public function findAllContain($champ, Request $request, $table=""): Response{
         $valeur = $request->get("recherche");
         $playlists = $this->playlistRepository->findByContainValue($champ, $valeur, $table);
         $categories = $this->categorieRepository->findAll();
@@ -93,14 +96,16 @@ class PlaylistsController extends AbstractController {
     }  
 
     #[Route('/playlists/playlist/{id}', name: 'playlists.showone')]
-    public function showOne($id): ShowResponse{
+    public function showOne($id): Response{
         $playlist = $this->playlistRepository->find($id);
+        $formationCount = $playlist->getFormations()->count();
         $playlistCategories = $this->categorieRepository->findAllForOnePlaylist($id);
         $playlistFormations = $this->formationRepository->findAllForOnePlaylist($id);
         return $this->render(self::TEMPLATE_PLAYLIST, [
             'playlist' => $playlist,
             'playlistcategories' => $playlistCategories,
-            'playlistformations' => $playlistFormations
+            'playlistformations' => $playlistFormations,
+            'formationCount' => $formationCount
         ]);        
     }       
     
