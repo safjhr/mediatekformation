@@ -67,12 +67,12 @@ class PlaylistsController extends AbstractController {
             case "name":
                 $playlists = $this->playlistRepository->findAllOrderByName($ordre);
                 break;
-            case "formationCount":  // Nouveau cas pour le tri par nombre de formations
+            case "formationCount":  
             $playlists = $this->playlistRepository->findAllWithFormationCount($ordre);
             break;
              default:
-                // Gestion du cas par défaut (par exemple, ne rien faire ou lancer une exception)
-                $playlists = $this->playlistRepository->findAllOrderByName('ASC'); // Ou gérer autrement
+                
+                $playlists = $this->playlistRepository->findAllOrderByName('ASC');
                 break;
         }
         $categories = $this->categorieRepository->findAll();

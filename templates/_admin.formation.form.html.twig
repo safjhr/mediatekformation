@@ -1,0 +1,42 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    {{ form_start(formformation) }}
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-auto">
+                    {{ form_row(formformation.publishedAt) }} {# Utilisez 'publishedAt' au lieu de 'publishedat' #}
+                </div>
+                <div>
+                    {% for categorie in formation.categories %}
+                        {{ categorie.name }}&nbsp;
+                    {% endfor %}
+                </div>
+            </div>
+            {{ form_row(formformation.title) }}
+            {{ form_row(formformation.playlist) }} {# Affichez la playlist ici #}
+        </div>
+        <div class="col">
+           {% if formation.videoId %}
+                <div style="width: 560px; height: 315px; float: none; clear: both; margin: 2px auto;">
+                  <embed
+                    src="https://www.youtube.com/embed/{{ formation.videoId }}" 
+                    wmode="transparent"
+                    type="video/mp4"
+                    width="100%" height="100%"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                    title="YouTube video player"
+                  >
+                </div>                                             
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(formformation.description) }}
+            </div>
+        </div>
+    </div>                                             
+    {{ form_end(formformation) }}
+{% endblock %}
