@@ -1,0 +1,10 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <h1>Ajouter une nouvelle playlist</h1>
+    {{ form_start(formplaylist) }}
+        {{ form_row(formplaylist.name) }}
+        {{ form_row(formplaylist.description) }}
+        {{ form_row(formplaylist.submit) }}
+    {{ form_end(formplaylist) }}
+{% endblock %}
