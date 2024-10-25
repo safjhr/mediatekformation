@@ -26,22 +26,22 @@ class FormationType extends AbstractType
                 'label' => 'Date'
             ])  
             ->add('title', TextType::class, [
-                'required' => true, // Ce champ est requis)
+                'required' => true, 
             ])
             ->add('description', TextareaType::class, [
-                'required' => false, // Ce champ n'est pas requis
+                'required' => false, 
             ])
             ->add('videoId')
             ->add('playlist', EntityType::class, [
                 'class' => Playlist::class,
                 'choice_label' => 'name',
-                'required' => true, // Ce champ est requis
+                'required' => true, 
             ])
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'required' => false, // Ce champ n'est pas requis
+                'required' => false, 
             ])
             ->add('submit', SubmitType::class, [
                 'label' =>'Enregistrer',

@@ -60,7 +60,9 @@
                 <tr class="align-middle">
                     <td>
                         <h5 class="text-info">
-                            {{ formation.title }}
+                            <a href="{{ path('formations.showone', {id: formation.id}) }}">
+                                {{ formation.title }}
+                            </a>
                         </h5>
                     </td>
                     <td class="text-left">

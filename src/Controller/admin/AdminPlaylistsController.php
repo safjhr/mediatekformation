@@ -22,9 +22,24 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author Fish
  */
 class AdminPlaylistsController extends AbstractController {
-   private $playlistRepository;
-   private $formationRepository;
+   
+    /**
+     * 
+     * @var PlaylistRepository
+     */
+    private $playlistRepository;
     
+    /**
+     * 
+     * @var FormationRepository
+     */
+    private $formationRepository;
+    
+   
+    /**
+     * 
+     * @param FormationRepository $repository
+     */ 
     function __construct(PlaylistRepository $playlistRepository, 
             CategorieRepository $categorieRepository,
             FormationRepository $formationRespository) {
