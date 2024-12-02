@@ -84,3 +84,26 @@ Le chemin des images (des 2 tailles) n'est pas mémorisé dans la BDD car il peu
 - Dans phpMyAdmin, se connecter à MySQL en root sans mot de passe et créer la BDD 'mediatekformation'.<br>
 - Récupérer le fichier mediatekformation.sql en racine du projet et l'utiliser pour remplir la BDD (si vous voulez mettre un login/pwd d'accès, il faut créer un utilisateur, lui donner les droits sur la BDD et il faut le préciser dans le fichier ".env" en racine du projet).<br>
 - De préférence, ouvrir l'application dans un IDE professionnel. L'adresse pour la lancer est : http://localhost/mediatekformation/public/index.php<br>
+
+Nouvelles fonctionnalités ajoutées : Partie Admin
+
+Accessible via l’URL suivante :
+https://safiya.netkube.net/admin/formations
+et les login est ( pseudo : safiya ; mdp : btssio )
+1. Gestion des Formations
+
+    Ajout : Possibilité d’ajouter une nouvelle formation en renseignant son titre, sa description, son lien vidéo (YouTube), sa playlist et ses catégories.
+    Modification : Édition des détails d’une formation existante.
+    Suppression : Suppression d'une formations.
+
+2. Gestion des Playlists
+
+    Ajout : Création d’une nouvelle playlist en renseignant son titre et sa description.
+    Modification : Édition des informations d’une playlist existante.
+    Suppression : Suppression des playlists si il nya aucunne formations desus.
+
+3. Gestion des Catégories
+
+    Ajout : Ajout d’une nouvelle catégorie (ex. langage, framework, outils).
+    Modification : Mise à jour des noms des catégories existantes.
+    Suppression : Suppression des catégories si il n'est lié a aucunne playlist.
